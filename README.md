@@ -15,3 +15,5 @@ jQuery, HTML and SASS/CSS
 ![In Progress - Wireframe](./public/Wireframe_InProgress_Timer.png)
 
 ![Completed - Wireframe](./public/Wireframe_Completed_Timer.png)
+
+![Responsive - Wireframe](./public/Wireframe_Responsive.png)
