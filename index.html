@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Pomodoro Timer</title>
+  <meta charset="UTF-8">
   <link href="style.css" type="text/css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <title>Pomodoro Timer</title>
 </head>
 
 <body>
@@ -14,17 +15,21 @@
     <h1 id="timer-text">25:00</h1>
       <div class="timer-actions">
         <p id="play-pause">play</p>
-        <p>reset</p>
+        <p id="reset">reset</p>
       </div>
   </div>
   <hr>
 
   <ul>
     <li>
-      <p>working time | 25</p>
+      <p id="working-text">working time | 25</p>
+      <button id="incWorkingTime">+</button>
+      <button id="decWorkingTime">-</button>
     </li>
     <li>
-      <p>break time | 5</p>
+      <p id="break-text">break time | 5</p>
+      <button id="incBreakTime">+</button>
+      <button id="decBreakTime">-</button>
     </li>
   </ul>
 

@@ -1,7 +1,8 @@
 // TODO: timer stops at 0 and goes into Break mode
-// TODO: change the name of the play/pause button
 
-var currentTime = 25 * 60;
+var workingTime = 25 * 60;
+var breakTime = 5 * 60;
+var currentTime = workingTime;
 var myTimerId;
 
 $(function() {
@@ -13,26 +14,44 @@ $(function() {
     }
   });
 
+  $('#reset').click(function() {
+    pauseTimer();
+    resetTimer();
+  });
+
+  $('#incWorkingTime').click(function() {
+    increaseWorkingTime();
+  });
+
+  $('#decWorkingTime').click(function() {
+    decreaseWorkingTime();
+  });
+
+  $('#incBreakTime').click(function() {
+    increaseBreakTime();
+  });
+
+  $('#decBreakTime').click(function() {
+    decreaseBreakTime();
+  });
 
 });
 
 function startTimer() {
-  console.log('start timer');
   myTimerId = window.setInterval(function() {
     currentTime--;
     updateDisplay();
   }, 1000);
 
   updatePlayPause();
-};
+}
 
 function pauseTimer() {
-  console.log('pause timer');
   clearTimeout(myTimerId);
   myTimerId = undefined;
 
   updatePlayPause();
-};
+}
 
 function updatePlayPause() {
   if(myTimerId) {
@@ -40,12 +59,12 @@ function updatePlayPause() {
   } else {
     $('#play-pause').html('play');
   }
-};
+}
 
 function updateDisplay() {
   var formattedTime = formatTime(currentTime);
   $('#timer-text').html(formattedTime);
-};
+}
 
 function formatTime(time) {
   var minutes = String(parseInt(time / 60));
@@ -59,4 +78,51 @@ function formatTime(time) {
   }
 
   return minutes + ':' + seconds;
-};
+}
+
+function resetTimer() {
+  currentTime = workingTime;  
+  updateDisplay();
+}
+
+function changeWorkingTime(increase) {
+  // update the working time
+  if(increase === 1) {
+    workingTime += 60;
+  } else {
+    if(workingTime > 0) workingTime -= 60;
+  } 
+  
+  // change the display
+  var myText = 'working time | ' + (workingTime / 60);
+  $('#working-text').text(myText);
+}
+
+function increaseWorkingTime() {
+  changeWorkingTime(1);
+}
+
+function decreaseWorkingTime() {
+  changeWorkingTime(-1);
+}
+
+function changeBreakTime(increase) {
+  // update the break time
+  if(increase === 1) {
+    breakTime += 60;
+  } else {
+    if(breakTime > 60) breakTime -= 60;
+  } 
+  
+  // change the display
+  var myText = 'break time | ' + (breakTime / 60);
+  $('#break-text').text(myText); 
+}
+
+function increaseBreakTime() {
+  changeBreakTime(1);
+}
+
+function decreaseBreakTime() {
+  changeBreakTime(-1);
+}
