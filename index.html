@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pomodoro Timer</title>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="Free Code Camp, FCC, Pomodoro Timer">
+  <meta name="description" content="Pomodoro Timer Project for Free Code Camp">
+  <meta name="author" content="Anthony Ng">
+  <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <link href="style.css" type="text/css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+
+<body>
+  <img id="header" src="./public/Header.png" alt="Pomodoro Timer"></img>
+  <hr>
+
+  <div class="timer">
+    <h1 id="timer-text">25:00</h1>
+      <div class="timer-actions">
+        <p id="play-pause">play</p>
+        <p id="reset">reset</p>
+      </div>
+  </div>
+  <hr>
+
+  <ul>
+    <li>
+      <p id="working-text">working time | 25</p>
+      <button id="incWorkingTime">+</button>
+      <button id="decWorkingTime">-</button>
+    </li>
+    <li>
+      <p id="break-text">break time | 5</p>
+      <button id="incBreakTime">+</button>
+      <button id="decBreakTime">-</button>
+    </li>
+  </ul>
+
+  <script src="app.js"></script>
+</body>
+</html>
