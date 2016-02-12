@@ -1,7 +1,7 @@
 ## Pomorodoro Timer
 This is the fourth front-end project for freecodecamp.com. I am creating a Pomodoro Timer.
 
-## Not yet hosted on Github
+## Hosted on [Github](http://newyork-anthonyngng.github.io/fcc_pomodoro/)
 
 ## Tools Used
 jQuery, HTML and SASS/CSS
