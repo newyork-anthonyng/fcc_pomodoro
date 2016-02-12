@@ -4,6 +4,7 @@ var workingTime = 25 * 60;
 var breakTime = 5 * 60;
 var currentTime = workingTime;
 var myTimerId;
+var currentMode = 'work';  // can be either 'work' or 'break'
 
 $(function() {
   $('#play-pause').click(function() {
@@ -39,11 +40,32 @@ $(function() {
 
 function startTimer() {
   myTimerId = window.setInterval(function() {
-    currentTime--;
+    updateTime();
     updateDisplay();
   }, 1000);
 
   updatePlayPause();
+}
+
+function updateTime() {
+  if(currentTime > 0) {
+    currentTime--;
+  } else {
+  if(!myTimerId) return false;
+
+  // time is over
+  if(currentMode === 'work') {
+    currentTime = breakTime;
+    currentMode = 'break';
+  } else if(currentMode === 'break') {
+    currentTime = workingTime;
+    currentMode = 'work';
+  }
+
+  updateDisplay();  
+  pauseTimer();
+
+  }
 }
 
 function pauseTimer() {
@@ -90,7 +112,7 @@ function changeWorkingTime(increase) {
   if(increase === 1) {
     workingTime += 60;
   } else {
-    if(workingTime > 0) workingTime -= 60;
+    if(workingTime > 60) workingTime -= 60;
   } 
   
   // change the display
